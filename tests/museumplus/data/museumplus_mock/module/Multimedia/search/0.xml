@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application xmlns="http://www.zetcom.com/ria/ws/module">
+  <modules>
+    <module name="Multimedia" totalSize="6">
+      <moduleItem hasAttachments="false" id="100001" uuid="1713AFC83A9C49D2A4048E17B58B1ECB">
+        <systemField dataType="Long" name="__id">
+          <value>100001</value>
+        </systemField>
+        <systemField dataType="Timestamp" name="__lastModified">
+          <value>2018-11-21 10:44:19.6</value>
+          <formattedValue language="en">21.11.2018 10:44</formattedValue>
+        </systemField>
+        <systemField dataType="Timestamp" name="__created">
+          <value>2018-10-21 10:44:19.6</value>
+          <formattedValue language="en">21.10.2018 10:44</formattedValue>
+        </systemField>
+        <dataField dataType="Varchar" name="MulOriginalFileTxt">
+          <value>Multimedia1.obj</value>
+        </dataField>
+      </moduleItem>
+      <moduleItem hasAttachments="true" id="100002" uuid="5EB2D9EC45B741ADB9C3230D70B488FB">
+        <systemField dataType="Long" name="__id">
+          <value>100002</value>
+        </systemField>
+        <systemField dataType="Timestamp" name="__lastModified">
+          <value>2018-11-25 12:25:19.73</value>
+          <formattedValue language="en">25.11.2018 12:25</formattedValue>
+        </systemField>
+        <systemField dataType="Timestamp" name="__created">
+          <value>2018-10-25 12:25:19.73</value>
+          <formattedValue language="en">25.10.2018 12:25</formattedValue>
+        </systemField>
+        <composite name="MulReferencesCre">
+          <compositeItem seqNo="0">
+            <moduleReference name="MulObjectRef" targetModule="Object" multiplicity="M:N" size="2">
+              <moduleReferenceItem moduleItemId="123456" uuid="0287E4981264485DA3DFDEAEB1D959AF" seqNo="0"/>
+              <moduleReferenceItem moduleItemId="654321" uuid="0287E4981264485DA3DFDEAEB1D959AF" seqNo="0"/>
+            </moduleReference>
+          </compositeItem>
+        </composite>
+      </moduleItem>
+      <moduleItem hasAttachments="true" id="100003" uuid="CDEFE42743934497B9C4433D72C223FE">
+        <systemField dataType="Long" name="__id">
+          <value>100003</value>
+        </systemField>
+        <dataField dataType="Varchar" name="MulOriginalFileTxt">
+          <value>Multimedia3.obj</value>
+        </dataField>
+      </moduleItem>
+    </module>
+  </modules>
+</application>

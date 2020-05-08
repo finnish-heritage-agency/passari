@@ -1,0 +1,34 @@
+---
+stages:
+  - build
+  - test
+
+build:
+  stage: build
+  image: $CI_REGISTRY/passari/passari-test-docker:latest
+  script:
+    - python3 setup.py sdist
+    - mv dist/*.tar.gz dist/${CI_PROJECT_NAME}.tar.gz
+  artifacts:
+    paths:
+      - dist/*.tar.gz
+
+test:
+  stage: test
+  image: $CI_REGISTRY/passari/passari-test-docker:latest
+  script:
+    - export LANG=en_US.UTF-8
+    - export LC_ALL=en_US.UTF-8
+    - python3.6 -mvenv .venv
+    - . .venv/bin/activate
+    # Install passari
+    - pip install .
+    # Install dpres-siptools and dependencies
+    - pip install -r https://raw.githubusercontent.com/Digital-Preservation-Finland/dpres-siptools/master/requirements_github.txt
+    - pip install https://github.com/Digital-Preservation-Finland/dpres-siptools/archive/master.zip
+    # Install file-scraper and dependencies
+    - pip install -r https://raw.githubusercontent.com/Digital-Preservation-Finland/file-scraper/master/requirements_dev.txt
+    # Install testing tools and run tests
+    - pip install -r requirements_dev.txt
+    - pytest -vv --showlocals --slow --cov passari
+  coverage: '/TOTAL.*\s+(\d+%)$/'

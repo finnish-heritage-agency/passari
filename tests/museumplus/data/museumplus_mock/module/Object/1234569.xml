@@ -1,0 +1,310 @@
+<?xml version="1.0"?>
+<application xmlns="http://www.zetcom.com/ria/ws/module">
+  <modules>
+    <module name="Object" totalSize="1">
+      <moduleItem hasAttachments="true" id="1234569" uuid="6a0eb57b-5293-458d-88a6-351876f54641">
+        <systemField dataType="Long" name="__id">
+          <value>1688097</value>
+        </systemField>
+        <systemField dataType="Varchar" name="__lastModifiedUser">
+          <value>MV_testuser</value>
+        </systemField>
+        <systemField dataType="Timestamp" name="__lastModified">
+          <value>2019-01-02 02:10:57.171</value>
+          <formattedValue language="en">02.01.2019 02:10</formattedValue>
+        </systemField>
+        <systemField dataType="Varchar" name="__createdUser">
+          <value/>
+        </systemField>
+        <systemField dataType="Timestamp" name="__created">
+          <value>1970-01-01 00:00:00.0</value>
+          <formattedValue language="en">01.01.1970 00:00</formattedValue>
+        </systemField>
+        <systemField dataType="Long" name="__orgUnit">
+          <value>NBA</value>
+        </systemField>
+        <systemField name="__uuid">
+          <value>6a0eb57b-5293-458d-88a6-351876f54641</value>
+        </systemField>
+        <dataField dataType="Boolean" name="ObjDummyMarkerNBA01Boo">
+          <value>false</value>
+          <formattedValue language="en">no</formattedValue>
+        </dataField>
+        <dataField dataType="Long" name="ObjNumberObjectsLnu">
+          <value>1</value>
+          <formattedValue language="en">1</formattedValue>
+        </dataField>
+        <dataField dataType="Varchar" name="ObjObjectNumberTxt">
+          <value>TEST1337:21</value>
+        </dataField>
+        <dataField dataType="Varchar" name="ObjObjectTitleTxt">
+          <value>Jonkinlainen testiaineisto</value>
+        </dataField>
+        <vocabularyReference name="ObjCategoryVoc" id="99991" instanceName="ObjCategoryVgr">
+          <vocabularyReferenceItem id="319452" name="kuva">
+            <formattedValue language="en">kuva</formattedValue>
+          </vocabularyReferenceItem>
+        </vocabularyReference>
+        <virtualField name="ObjAssociatedPlaceVrt">
+          <value/>
+        </virtualField>
+        <virtualField name="ObjNormalLocationVrt">
+          <value/>
+        </virtualField>
+        <virtualField name="ObjCurrentLocationGrpVrt">
+          <value/>
+        </virtualField>
+        <virtualField name="ObjObjectNumberSortedVrt">
+          <value>TEST1337:000021</value>
+        </virtualField>
+        <virtualField name="ObjMultimediaRestrictionsVrt">
+          <value/>
+        </virtualField>
+        <virtualField name="ObjPerAssociationGenderVrt">
+          <value/>
+        </virtualField>
+        <virtualField name="ObjUUIDNBA02Vrt">
+          <value>urn:uuid:6a0eb57b-5293-458d-88a6-351876f54641</value>
+        </virtualField>
+        <virtualField name="ObjObjectNumberVrt">
+          <value>TEST1337:21</value>
+        </virtualField>
+        <virtualField name="ObjCurrentLocationVrt">
+          <value/>
+        </virtualField>
+        <virtualField name="ObjObjectTitleVrt">
+          <value>Jonkinlainen testiaineisto</value>
+        </virtualField>
+        <virtualField name="ObjObjectVrt">
+          <value>TEST1337:21, Erkki Esimerkki, Jonkinlainen testiaineisto</value>
+        </virtualField>
+        <virtualField name="ObjPerAssociationVrt">
+          <value/>
+        </virtualField>
+        <repeatableGroup name="ObjRecordingDetailsNBA01Grp" size="2">
+          <repeatableGroupItem id="38502033">
+            <dataField dataType="Date" name="DateDat">
+              <value>2014-03-24Z</value>
+              <formattedValue language="en">24.03.2014</formattedValue>
+            </dataField>
+            <dataField dataType="Varchar" name="DoneByTxt">
+              <value>TESTUSER</value>
+            </dataField>
+            <vocabularyReference name="TypeVoc" id="51619" instanceName="ObjRecordingDetailsTypeNBA01Vgr">
+              <vocabularyReferenceItem id="128828" name="Modification">
+                <formattedValue language="en">Modification</formattedValue>
+              </vocabularyReferenceItem>
+            </vocabularyReference>
+          </repeatableGroupItem>
+          <repeatableGroupItem id="38502031">
+            <dataField dataType="Date" name="DateDat">
+              <value>2014-03-24Z</value>
+              <formattedValue language="en">24.03.2014</formattedValue>
+            </dataField>
+            <dataField dataType="Varchar" name="DoneByTxt">
+              <value>TESTUSER</value>
+            </dataField>
+            <vocabularyReference name="TypeVoc" id="51619" instanceName="ObjRecordingDetailsTypeNBA01Vgr">
+              <vocabularyReferenceItem id="128827" name="Creation">
+                <formattedValue language="en">Creation</formattedValue>
+              </vocabularyReferenceItem>
+            </vocabularyReference>
+          </repeatableGroupItem>
+        </repeatableGroup>
+        <repeatableGroup name="ObjObjectNumberGrp" size="1">
+          <repeatableGroupItem id="38502038">
+            <dataField dataType="Varchar" name="LastNumberTxt">
+              <value>SMM142009:536</value>
+            </dataField>
+            <dataField dataType="Varchar" name="NumberRealTxt">
+              <value>AKDG</value>
+            </dataField>
+            <dataField dataType="Varchar" name="Part1Txt">
+              <value>AKDG</value>
+            </dataField>
+            <dataField dataType="Varchar" name="Part2Txt">
+              <value>3670</value>
+            </dataField>
+            <dataField dataType="Varchar" name="Part4Txt">
+              <value>:</value>
+            </dataField>
+            <dataField dataType="Varchar" name="Part5Txt">
+              <value>35</value>
+            </dataField>
+            <dataField dataType="Long" name="SortLnu">
+              <value>1</value>
+              <formattedValue language="en">1</formattedValue>
+            </dataField>
+            <dataField dataType="Clob" name="InvDescriptionClb">
+              <value>MIGRATION TEST schema for artefact numbers: default_schema, Inventory numbers ID: 11003
+Part 1 - collection short name, mandatory - path
+Part 2 - main number - numeric, mandatory - autoincr
+Part 3 - main number specifier, text
+Part 4 - delimiter, constant with value :
+Part 5 - sub number - numeric, autoincr
+Part 6 - sub number specifier, text</value>
+            </dataField>
+            <virtualField name="NumberSortedVrt">
+              <value>AKDG003670:000035</value>
+            </virtualField>
+            <virtualField name="NumberVrt">
+              <value>AKDG3670:35</value>
+            </virtualField>
+            <vocabularyReference name="DenominationVoc" id="41617" instanceName="ObjObjectNumberDenominationVgr">
+              <vocabularyReferenceItem id="118663" name="Object number">
+                <formattedValue language="en">Object number</formattedValue>
+              </vocabularyReferenceItem>
+            </vocabularyReference>
+            <moduleReference name="InvNumberSchemeRef" targetModule="InventoryNumber" multiplicity="N:1" size="1">
+              <moduleReferenceItem moduleItemId="5002" uuid="36e3de12-b859-4074-ad9c-ca2a4d2d5964">
+                <formattedValue language="en">Museoviraston numero</formattedValue>
+              </moduleReferenceItem>
+            </moduleReference>
+          </repeatableGroupItem>
+        </repeatableGroup>
+        <repeatableGroup name="ObjObjectTitleGrp" size="1">
+          <repeatableGroupItem id="38502035">
+            <dataField dataType="Long" name="SortLnu">
+              <value>1</value>
+              <formattedValue language="en">1</formattedValue>
+            </dataField>
+            <dataField dataType="Varchar" name="TitleTxt">
+              <value>Haudan taso 4, vainajan p&#xE4;&#xE4;kallon nosto. Kuvattu pohjoiskoillisesta.</value>
+            </dataField>
+            <vocabularyReference name="LanguageVoc" id="30281" instanceName="GenLanguageVgr">
+              <vocabularyReferenceItem id="319444" name="fi">
+                <formattedValue language="en">Finnish</formattedValue>
+              </vocabularyReferenceItem>
+            </vocabularyReference>
+            <vocabularyReference name="TypeVoc" id="30450" instanceName="ObjTitleTypeVgr">
+              <vocabularyReferenceItem id="321250" name="Subject">
+                <formattedValue language="en">Subject</formattedValue>
+              </vocabularyReferenceItem>
+            </vocabularyReference>
+          </repeatableGroupItem>
+        </repeatableGroup>
+        <repeatableGroup name="ObjKeyWordsGrp" size="3">
+          <repeatableGroupItem id="38502030">
+            <vocabularyReference name="KokoKeywordsNBA01Voc" id="42617" instanceName="ObjKeywordsKokoNBA01Vgr">
+              <vocabularyReferenceItem id="292085" name="http://www.yso.fi/onto/koko/p32644">
+                <formattedValue language="en">blah blah blah</formattedValue>
+              </vocabularyReferenceItem>
+            </vocabularyReference>
+          </repeatableGroupItem>
+          <repeatableGroupItem id="38502025">
+            <vocabularyReference name="KokoKeywordsNBA01Voc" id="42617" instanceName="ObjKeywordsKokoNBA01Vgr">
+              <vocabularyReferenceItem id="292223" name="http://www.yso.fi/onto/koko/p33117">
+                <formattedValue language="en">Middle Ages</formattedValue>
+              </vocabularyReferenceItem>
+            </vocabularyReference>
+          </repeatableGroupItem>
+          <repeatableGroupItem id="38502037">
+            <vocabularyReference name="KokoKeywordsNBA01Voc" id="42617" instanceName="ObjKeywordsKokoNBA01Vgr">
+              <vocabularyReferenceItem id="155698" name="http://www.yso.fi/onto/koko/p36202">
+                <formattedValue language="en">excavations</formattedValue>
+              </vocabularyReferenceItem>
+            </vocabularyReference>
+          </repeatableGroupItem>
+        </repeatableGroup>
+        <repeatableGroup name="ObjClassificationsNBA01Grp" size="1">
+          <repeatableGroupItem id="38502032">
+            <vocabularyReference name="ClassificationVoc" id="30350" instanceName="ObjClassificationVgr">
+              <vocabularyReferenceItem id="268849" name="43094_Kuvatyyppi##digitaalikuva">
+                <formattedValue language="en">digitaalikuva</formattedValue>
+              </vocabularyReferenceItem>
+            </vocabularyReference>
+          </repeatableGroupItem>
+        </repeatableGroup>
+        <repeatableGroup name="ObjBriefDescriptionNBA01Grp" size="1">
+          <repeatableGroupItem id="38502042">
+            <dataField dataType="Clob" name="TextClb">
+              <value>kaivauskuva</value>
+            </dataField>
+            <vocabularyReference name="TypeVoc" id="42624" instanceName="ObjBriefDescriptionTypeNBA01Vgr">
+              <vocabularyReferenceItem id="88432" name="Content description">
+                <formattedValue language="en">Content description</formattedValue>
+              </vocabularyReferenceItem>
+            </vocabularyReference>
+          </repeatableGroupItem>
+        </repeatableGroup>
+        <repeatableGroup name="ObjPlaceNBA01Grp" size="1">
+          <repeatableGroupItem id="38502027">
+            <dataField dataType="Long" name="SortLnu">
+              <value>1</value>
+              <formattedValue language="en">1</formattedValue>
+            </dataField>
+            <vocabularyReference name="TypeVoc" id="42627" instanceName="ObjPlaceTypeNBA01Vgr">
+              <vocabularyReferenceItem id="321260" name="Subject_place">
+                <formattedValue language="en">Subject_place</formattedValue>
+              </vocabularyReferenceItem>
+            </vocabularyReference>
+            <vocabularyReference name="PlaceFinNBA01Voc" id="42628" instanceName="ObjPlaceFinNBA01Vgr">
+              <vocabularyReferenceItem id="282903" name="http://www.yso.fi/onto/yso/p94164">
+                <formattedValue language="en">Janakkala</formattedValue>
+              </vocabularyReferenceItem>
+            </vocabularyReference>
+            <moduleReference name="PlaceRef" targetModule="Place" multiplicity="N:1" size="1">
+              <moduleReferenceItem moduleItemId="29973" uuid="A9393A2E5D1C5DA77B1CDC7A02A6CF72">
+                <formattedValue language="en">Tupala</formattedValue>
+              </moduleReferenceItem>
+            </moduleReference>
+          </repeatableGroupItem>
+        </repeatableGroup>
+        <repeatableGroup name="ObjDateGrp" size="1">
+          <repeatableGroupItem id="38502028">
+            <dataField dataType="Long" name="YearFromLnu">
+              <value>2013</value>
+              <formattedValue language="en">2013</formattedValue>
+            </dataField>
+            <virtualField name="PreviewVrt">
+              <value>kuvausaika: 2013</value>
+            </virtualField>
+            <vocabularyReference name="TypeVoc" id="30361" instanceName="ObjDateTypeVgr">
+              <vocabularyReferenceItem id="197935" name="yleinen_kuvausaika">
+                <formattedValue language="en">shooting date</formattedValue>
+              </vocabularyReferenceItem>
+            </vocabularyReference>
+          </repeatableGroupItem>
+        </repeatableGroup>
+        <moduleReference name="ObjManagOwnerNBA01Ref" targetModule="Address" multiplicity="N:1" size="1">
+          <moduleReferenceItem moduleItemId="140581" uuid="C476CA0FF12A96F941B1E9D2751A7628">
+            <formattedValue language="en">Museovirasto, Helsinki</formattedValue>
+          </moduleReferenceItem>
+        </moduleReference>
+        <moduleReference name="ObjManagResponsibleNBA01Ref" targetModule="Address" multiplicity="N:1" size="1">
+          <moduleReferenceItem moduleItemId="151193" uuid="979704471AF525A8CDEA62592E2E3B50">
+            <formattedValue language="en">Arkisto- ja tietopalvelut</formattedValue>
+          </moduleReferenceItem>
+        </moduleReference>
+        <moduleReference name="ObjMultimediaRef" targetModule="Multimedia" multiplicity="M:N" size="1">
+          <moduleReferenceItem moduleItemId="1234569001" uuid="9ce62485-e260-42d2-ae88-b4dc0c094940" seqNo="0">
+            <formattedValue language="en">test.zip, arkisto</formattedValue>
+            <dataField dataType="Boolean" name="ThumbnailBoo">
+              <value>true</value>
+              <formattedValue language="en">yes</formattedValue>
+            </dataField>
+          </moduleReferenceItem>
+        </moduleReference>
+        <moduleReference name="ObjPerAssociationRef" targetModule="Person" multiplicity="M:N" size="1">
+          <moduleReferenceItem moduleItemId="137216" uuid="034AAE87A8838ADB830745C39DB2B478" seqNo="0">
+            <formattedValue language="en">Erkki Esimerkki, kuvaaja</formattedValue>
+            <dataField dataType="Long" name="SortLnu">
+              <value>1</value>
+              <formattedValue language="en">1</formattedValue>
+            </dataField>
+            <vocabularyReference name="Role0047Voc" id="30423" instanceName="ObjPerAssociationRoleVgr">
+              <vocabularyReferenceItem id="98589" name="kuvaaja">
+                <formattedValue language="en">kuvaaja</formattedValue>
+              </vocabularyReferenceItem>
+            </vocabularyReference>
+          </moduleReferenceItem>
+        </moduleReference>
+        <moduleReference name="ObjCollectionNBA01Ref" targetModule="Collection" multiplicity="N:1" size="1">
+          <moduleReferenceItem moduleItemId="7923" uuid="675AEBFA4D375D204D9B323B0B7AD3B6">
+            <formattedValue language="en">Arkeologian kuvakokoelma -&gt; Digikuvakokoelma</formattedValue>
+          </moduleReferenceItem>
+        </moduleReference>
+      </moduleItem>
+    </module>
+  </modules>
+</application>

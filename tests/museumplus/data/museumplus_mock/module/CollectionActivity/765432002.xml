@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application xmlns="http://www.zetcom.com/ria/ws/module">
+  <modules>
+    <module name="CollectionActivity" totalSize="1">
+      <moduleItem hasAttachments="false" id="765432002" uuid="12AC01BB3EEE2AD5B8143A2693BD06B1">
+        <systemField dataType="Long" name="__id">
+          <value>765432002</value>
+        </systemField>
+        <systemField dataType="Varchar" name="__lastModifiedUser">
+          <value>MV_testUser</value>
+        </systemField>
+        <systemField dataType="Timestamp" name="__lastModified">
+          <value>2019-08-23 06:51:30.92</value>
+          <formattedValue language="en">23.08.2019 06:51</formattedValue>
+        </systemField>
+        <systemField dataType="Varchar" name="__createdUser">
+          <value>ZET_DÜ</value>
+        </systemField>
+        <systemField dataType="Timestamp" name="__created">
+          <value>2018-11-15 22:24:07.357</value>
+          <formattedValue language="en">15.11.2018 22:24</formattedValue>
+        </systemField>
+        <systemField name="__uuid">
+          <value>12AC01BB3EEE2AD5B8143A2693BD06B1</value>
+        </systemField>
+        <dataField dataType="Clob" name="ColNotesClb">
+          <value>Test note</value>
+        </dataField>
+      </moduleItem>
+    </module>
+  </modules>
+</application>
