@@ -19,10 +19,22 @@ setup(
     include_package_data=True,
     package_dir={"passari": "src/passari"},
     install_requires=[
-        "aiohttp", "aiofiles", "lxml",
+        "aiohttp",
+        "aiofiles",
+        "lxml>=4.1",
         "click>=7", "click<8",
-        "toml", "python-dateutil", "paramiko", "filelock"
+        "toml",
+        "python-dateutil",
+        "paramiko",
+        "filelock"
     ],
+    classifiers=[
+        "Development Status :: 5 - Production/Stable",
+        "Operating System :: POSIX :: Linux",
+        "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3.6"
+    ],
+    python_requires=">=3.6",
     entry_points={
         "console_scripts": [
             "download-object = passari.scripts.download_object:cli",
