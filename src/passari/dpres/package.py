@@ -562,7 +562,7 @@ class MuseumObjectPackage:
         The same OBJID is retained between different versions of the same
         object.
         """
-        return f"MuseumPlusPAS_Object_{self.museum_object.object_id}"
+        return f"Passari_Object_{self.museum_object.object_id}"
 
     @property
     def contentid(self):
