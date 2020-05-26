@@ -48,8 +48,6 @@ DEFAULT_CONFIG = f"""
 level=10
 
 [mets]
-# Agent name used in PREMIS events
-agent_name='Passari'
 # Organization name used in PREMIS events
 organization_name='National Board of Antiquities'
 # Contract ID used for DPRES REST API and in PREMIS events
