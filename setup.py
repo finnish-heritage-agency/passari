@@ -1,6 +1,7 @@
 from setuptools import setup, find_packages
 
 
+NAME = "passari"
 DESCRIPTION = (
     "Tools for MuseumPlus digital preservation processes"
 )
@@ -10,7 +11,7 @@ AUTHOR_EMAIL = "janne.pulkkinen@museovirasto.fi"
 
 
 setup(
-    name="passari",
+    name=NAME,
     description=DESCRIPTION,
     long_description=LONG_DESCRIPTION,
     author=AUTHOR,
@@ -43,6 +44,16 @@ setup(
             "confirm-sip = passari.scripts.confirm_sip:cli"
         ]
     },
+    command_options={
+        "build_sphinx": {
+            "project": ("setup.py", NAME),
+            "source_dir": ("setup.py", "docs")
+        }
+    },
     use_scm_version=True,
-    setup_requires=["setuptools_scm"]
+    setup_requires=["setuptools_scm", "sphinx", "sphinxcontrib-apidoc"],
+    extras_require={
+        "sphinx": ["sphinxcontrib-apidoc"]
+    },
+
 )

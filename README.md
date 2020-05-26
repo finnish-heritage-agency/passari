@@ -27,3 +27,12 @@ Configuration
 Upon startup, a configuration file will be created in the default location; in Linux
 this is usually `~/.config/passari/config.toml`. Fill the configuration file
 with required options (eg. MuseumPlus credentials).
+
+Documentation
+-------------
+
+Documentation can be generated using Sphinx by running the following command:
+
+```
+python setup.py build_sphinx
+```
