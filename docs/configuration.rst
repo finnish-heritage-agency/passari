@@ -24,7 +24,7 @@ The contents of the file should look like this:
 
    [mets]
    # Organization name used in PREMIS events
-   organization_name='National Board of Antiquities'
+   organization_name='ORGANIZATION NAME HERE'
    # Contract ID used for DPRES REST API and in PREMIS events
    contract_id='12345678-f00d-d00f-a4b7-010a184befdd'
 
