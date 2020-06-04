@@ -33,7 +33,8 @@ setup(
         "Development Status :: 5 - Production/Stable",
         "Operating System :: POSIX :: Linux",
         "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.6"
+        "Programming Language :: Python :: 3.6",
+        "License :: OSI Approved :: MIT License"
     ],
     python_requires=">=3.6",
     entry_points={

@@ -20,13 +20,15 @@ from pkg_resources import get_distribution, DistributionNotFound
 # -- Project information -----------------------------------------------------
 
 project = 'Passari'
-copyright = '2020, Janne Pulkkinen'
+copyright = '2020, Finnish Heritage Agency'
 author = 'Janne Pulkkinen'
 
 try:
     release = get_distribution("passari").version
+    version = release
 except DistributionNotFound:
     release = None
+    version = None
 
 # -- General configuration ---------------------------------------------------
 
