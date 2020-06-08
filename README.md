@@ -19,6 +19,15 @@ source venv/bin/activate
 pip install .
 ```
 
+You can install directly from GitHub:
+
+```
+# Install git-tagged version 1.0 (replace with newer if available)
+pip install --upgrade git+https://github.com/finnish-heritage-agency/passari.git@1.0#egg=passari
+# Install development version from master
+pip install --upgrade git+https://github.com/finnish-heritage-agency/passari.git#egg=passari
+```
+
 You can now use the different tools (eg. `download-object`).
 
 Configuration
