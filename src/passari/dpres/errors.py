@@ -12,39 +12,6 @@ class ErrorDetector:
         raise NotImplementedError
 
 
-class JPEGVersionError(ErrorDetector):
-    """
-    Raise a PreservationError if the JPEG version couldn't be detected
-    """
-    def check(self, exc):
-        if exc.cmd[0] != "import-object":
-            return
-
-        jpeg_version_error = (
-            ("ValueError: MIME type image/jpeg with version JPEG image "
-             "data is not supported.")
-            in exc.stderr.decode("utf-8")
-        )
-
-        if jpeg_version_error:
-            # JPEG images with metadata are detected incorrectly although they
-            # are currently supported by DPRES service. EXIF 2.3 is unsupported
-            # at the moment, but will be added during the next spec revision.
-            # Migration isn't necessary, so freeze failing JPEG files for the
-            # time being.
-            # (CSC ticket #366381)
-            # TODO: Remove this once JPEG version detection is fixed in
-            # `file-scraper`.
-            raise PreservationError(
-                detail=(
-                    f"JPEG file {exc.cmd[-1]} couldn't be detected correctly, "
-                    f"and it may use EXIF metadata which isn't detected "
-                    f"properly yet."
-                ),
-                error="JPEG version not detected correctly"
-            )
-
-
 class JHOVEInvalidTIFFError(ErrorDetector):
     """
     Raise a PreservationError if JHOVE detects an invalid TIFF.
@@ -140,8 +107,7 @@ class JPEGMIMETypeError(ErrorDetector):
 
 
 ERROR_DETECTORS = (
-    JPEGVersionError, JHOVEInvalidTIFFError, MultiPageTIFFError,
-    JPEGMIMETypeError
+    JHOVEInvalidTIFFError, MultiPageTIFFError, JPEGMIMETypeError
 )
 
 # TODO: As with event creators, error detectors could be developed and

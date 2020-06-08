@@ -312,41 +312,6 @@ class TestMuseumObjectPackagePreservationError:
         assert "Unsupported file format: wad" == exc.value.error
 
     @pytest.mark.asyncio
-    async def test_generate_sip_jpeg_version_not_detected(
-            self, package_dir, museum_package_factory, monkeypatch):
-        """
-        Test generating a SIP with a JPEG file that can't be detected correctly
-        yet and ensure PreservationError is raised
-        """
-        # Monkeypatch 'import_object' since reproducing the error would
-        # otherwise require the exact same versions of file and FIDO as
-        # used in production
-        async def mock_import_object(path, *args, **kwargs):
-            from passari.dpres.scripts import import_object
-
-            if path.name == "test.JPG":
-                raise CalledProcessError(
-                    cmd=["import-object", str(path)],
-                    returncode=1,
-                    output=b"",
-                    stderr=IMPORT_OBJECT_JPEG_UNSUPPORTED_STDERR.encode("utf-8")
-                )
-            else:
-                return await import_object(path, *args, **kwargs)
-
-        monkeypatch.setattr(
-            "passari.dpres.package.import_object",
-            mock_import_object
-        )
-
-        museum_package = await museum_package_factory("1234576")
-
-        with pytest.raises(PreservationError) as exc:
-            await museum_package.generate_sip()
-
-        assert "JPEG version not detected correctly" == exc.value.error
-
-    @pytest.mark.asyncio
     async def test_generate_sip_invalid_tiff_jhove(
             self, package_dir, museum_package_factory):
         """
