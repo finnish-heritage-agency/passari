@@ -7,7 +7,15 @@ import aiofiles
 from passari.config import CONFIG
 from passari.logger import logger
 
+from pkg_resources import DistributionNotFound, get_distribution
+
 from subprocess import CalledProcessError
+
+
+try:
+    PASSARI_VERSION = get_distribution("passari").version
+except DistributionNotFound:
+    PASSARI_VERSION = "unknown"
 
 
 def get_virtualenv_environ(virtualenv_path):
@@ -150,7 +158,7 @@ async def add_premis_event(
         "premis-event", "--base_path", str(base_path),
         "--workspace", str(workspace_path),
         "--event_detail", event_detail, "--event_outcome", event_outcome,
-        "--agent_name", "passari",
+        "--agent_name", f"passari-v{PASSARI_VERSION}",
         # Agent type 'software' used per example in
         # http://digitalpreservation.fi/files/PAS-metatiedot-ja-aineiston-paketointi-1.7.0.pdf
         "--agent_type", "software"

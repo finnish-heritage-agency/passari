@@ -56,6 +56,18 @@ class TestCreateSIP:
         assert mets_hdr.attrib["RECORDSTATUS"] == "submission"
         assert mets_hdr.attrib["CREATEDATE"] == "2019-12-03T13:30:45+00:00"
 
+        # Find the agent name for Passari and ensure the version number
+        # is included
+        agent_name = xml.xpath(
+            "mets:amdSec//mets:digiprovMD//"
+            "premis:agentName[starts-with(., 'passari-v')]",
+            namespaces={"mets": METS_NS, "premis": PREMIS_NS}
+        )[0].text
+        version = agent_name.replace("passari-v", "").split(".")
+
+        # The version number should be numeric
+        assert version[0].isdigit()
+
     @pytest.mark.slow
     def test_update(self, create_sip, museum_package_dir, extract_tar):
         """
