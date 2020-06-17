@@ -34,8 +34,18 @@ class TestDownloadObject:
         package_dir = museum_packages_dir / "1234567"
         assert package_dir.is_dir()
 
-        assert package_dir.joinpath("sip", "attachments").is_dir()
-        assert package_dir.joinpath("sip", "reports").is_dir()
+        assert (package_dir / "sip" / "attachments").is_dir()
+
+        assert (package_dir / "sip" / "reports").is_dir()
+        assert (package_dir / "sip" / "reports" / "Object.xml").is_file()
+
+        attachment_dir = package_dir / "sip" / "attachments"
+
+        assert (attachment_dir / "1234567001" / "kuva1.JPG").is_file()
+        assert (attachment_dir / "1234567001" / "Multimedia.xml").is_file()
+
+        assert (attachment_dir / "1234567002" / "kuva2.JPG").is_file()
+        assert (attachment_dir / "1234567002" / "Multimedia.xml").is_file()
 
     def test_success_no_attachments(self, download_object, museum_packages_dir):
         """
@@ -50,8 +60,10 @@ class TestDownloadObject:
         package_dir = museum_packages_dir / "1234568"
         assert package_dir.is_dir()
 
-        assert not package_dir.joinpath("sip", "attachments").is_dir()
         assert package_dir.joinpath("sip", "reports").is_dir()
+        assert (package_dir / "sip" / "reports" / "Object.xml").is_file()
+
+        assert not package_dir.joinpath("sip", "attachments").is_dir()
 
     def test_success_empty_attachment(
             self, download_object, museum_packages_dir):

@@ -5,6 +5,10 @@ from passari.museumplus.db import get_museum_object
 
 
 class TestMuseumObject:
+    """
+    Test properties that are retrieved from the underlying Object XML
+    document
+    """
     def test_sip_name(self, museum_object):
         assert museum_object.sip_name == "20190102_Object_1234567"
 
@@ -37,6 +41,10 @@ class TestMuseumObject:
 
 
 class TestMuseumAttachment:
+    """
+    Test properties that are retrieved from the underlying Multimedia XML
+    document
+    """
     def test_filename(self, museum_attachment):
         assert museum_attachment.filename == "kuva1.JPG"
 
@@ -68,7 +76,10 @@ class TestMuseumObjectDownload:
             self, museum_session, mock_museumplus):
         """
         Try downloading a barebones Object document and check it causes an
-        exception
+        exception.
+
+        This mimics a situation in which MuseumPlus silently returns a
+        truncated XML document due to insufficient permissions.
         """
         with pytest.raises(IOError) as exc:
             await get_museum_object(

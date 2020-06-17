@@ -3,11 +3,10 @@ import os
 
 import pytest
 from passari.dpres.events import (CollectionActivityCreationEvent,
-                                         LIDOCreationEvent,
-                                         MultimediaCreationEvent,
-                                         MultimediaMuskettiMigrationEvent,
-                                         ObjectCreationEvent,
-                                         ObjectMuskettiMigrationEvent)
+                                  LIDOCreationEvent, MultimediaCreationEvent,
+                                  MultimediaMuskettiMigrationEvent,
+                                  ObjectCreationEvent,
+                                  ObjectMuskettiMigrationEvent)
 
 
 def get_events_from(event_cls, museum_package):

@@ -3,8 +3,7 @@ import lxml.etree
 import pytest
 from aiohttp.client_exceptions import ClientResponseError
 from passari.museumplus.fields import (add_preservation_event,
-                                              get_object_field,
-                                              set_object_field)
+                                       get_object_field, set_object_field)
 from passari.museumplus.settings import ZETCOM_NS
 
 

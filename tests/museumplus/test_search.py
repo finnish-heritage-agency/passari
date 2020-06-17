@@ -5,8 +5,7 @@ import lxml.etree
 import pytest
 from passari.config import CONFIG
 from passari.museumplus.search import (ObjectSearchResponse,
-                                              iterate_multimedia,
-                                              iterate_objects)
+                                       iterate_multimedia, iterate_objects)
 from passari.museumplus.settings import ZETCOM_SEARCH_NS
 
 

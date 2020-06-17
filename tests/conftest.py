@@ -34,6 +34,7 @@ def pytest_collection_modifyitems(config, items):
 def cache_dir(tmpdir, monkeypatch):
     (tmpdir / ".cache").mkdir()
     monkeypatch.setenv("XDG_CACHE_HOME", str(tmpdir / ".cache"))
+
     yield Path(tmpdir / ".cache")
 
 

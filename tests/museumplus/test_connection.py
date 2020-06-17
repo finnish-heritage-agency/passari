@@ -1,6 +1,5 @@
 import os
 import time
-from pathlib import Path
 
 import pytest
 from passari.museumplus.connection import get_museum_session
