@@ -29,7 +29,6 @@ async def download_object(
                    workflow job.
     """
     session = await get_museum_session()
-    # 1. Retrieve object
     print(f"Retrieving object {object_id}")
     museum_object = await get_museum_object(
         session=session, object_id=object_id)

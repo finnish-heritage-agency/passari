@@ -35,7 +35,7 @@ def submit_sip(package_dir, object_id: int, sip_id: str = None):
             str(dest_path / temp_filename)
         )
 
-        print("Renaming downloaded file")
+        print("Renaming uploaded file")
         sftp.rename(
             str(dest_path / temp_filename),
             str(dest_path / museum_package.sip_filename)

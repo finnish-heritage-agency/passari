@@ -34,7 +34,7 @@ async def create_sip(
     if not create_date:
         create_date = datetime.datetime.now(datetime.timezone.utc)
 
-    # Retrieve object
+    # Retrieve already downloaded object
     museum_package = await MuseumObjectPackage.from_path(
         path=package_dir / str(object_id), sip_id=sip_id
     )
