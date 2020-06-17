@@ -25,7 +25,7 @@ except DistributionNotFound:
 
 USER_AGENT = (
     f"passari/{PASSARI_VERSION} "
-    f"(janne.pulkkinen@museovirasto.fi)"
+    f"(github.com/finnish-heritage-agency/passari)"
 )
 
 
@@ -183,9 +183,6 @@ async def get_museum_session() -> aiohttp.ClientSession:
             login=f"user[{user}]", password=f"session[{session_key}]"
         ),
         headers={
-            "User-Agent": (
-                f"passari/{PASSARI_VERSION} "
-                f"(janne.pulkkinen@museovirasto.fi)"
-            )
+            "User-Agent": USER_AGENT
         }
     )
