@@ -219,6 +219,13 @@ class MuseumObjectPackage:
                 f"{MUSEUMPLUS_URL}/module/Multimedia/{item_id}/attachment",
                 headers={"Accept": "application/octet-stream"}
             )
+            if response.status == 404:
+                # No attachment exists for this Multimedia instance; only
+                # return the metadata
+                return attachment
+
+            response.raise_for_status()
+
             # TODO: If we can determine the file size beforehand, we could use
             # fallocate to allocate the required disk space and then
             # download the file.
