@@ -106,8 +106,40 @@ class JPEGMIMETypeError(ErrorDetector):
             )
 
 
+class JPEGMPONotSupportedError(ErrorDetector):
+    """
+    Raise a PreservationError if a MPO file (image format based on JPEG using
+    the same file extension) is detected.
+    """
+    def check(self, exc):
+        if exc.cmd[0] != "import-object":
+            return
+
+        file_path = exc.cmd[-1]
+        file_ext = file_path.split(".")[-1].lower()
+
+        if file_ext not in ("jpg", "jpeg"):
+            return
+
+        stderr = exc.stderr.decode("utf-8")
+
+        mpo_found = (
+            "Conflict with existing value 'image/jpeg' and new value "
+            "'image/mpo'"
+        ) in stderr
+
+        if mpo_found:
+            raise PreservationError(
+                detail=(
+                    f"MPO image file {exc.cmd[-1]} is not supported"
+                ),
+                error="MPO JPEG files not supported"
+            )
+
+
 ERROR_DETECTORS = (
-    JHOVEInvalidTIFFError, MultiPageTIFFError, JPEGMIMETypeError
+    JHOVEInvalidTIFFError, MultiPageTIFFError, JPEGMIMETypeError,
+    JPEGMPONotSupportedError
 )
 
 # TODO: As with event creators, error detectors could be developed and

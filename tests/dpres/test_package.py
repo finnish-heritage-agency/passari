@@ -376,6 +376,20 @@ class TestMuseumObjectPackagePreservationError:
 
         assert "JPEG MIME type detection failed" == exc.value.error
 
+    @pytest.mark.asyncio
+    async def test_generate_sip_jpeg_mpo_not_supported(
+            self, package_dir, museum_package_factory):
+        """
+        Test generating a SIP containing a MPO/JPEG file that
+        is not supported
+        """
+        museum_package = await museum_package_factory("1234581")
+
+        with pytest.raises(PreservationError) as exc:
+            await museum_package.generate_sip()
+
+        assert "MPO JPEG files not supported" == exc.value.error
+
 
 class TestMuseumObjectPackage:
     def test_all_files(self, museum_package):
