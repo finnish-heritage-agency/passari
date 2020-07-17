@@ -1,4 +1,4 @@
-class PreservationError(BaseException):
+class PreservationError(Exception):
     """
     Preservation-related error that prevents an object from being preserved.
 
