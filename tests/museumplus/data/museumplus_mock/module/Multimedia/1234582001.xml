@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application xmlns="http://www.zetcom.com/ria/ws/module">
+  <modules>
+    <module name="Multimedia" totalSize="1">
+      <moduleItem hasAttachments="true" id="1234582001" uuid="9ce62485-e260-42d2-ae88-b4dc0c094940">
+        <systemField dataType="Long" name="__id">
+          <value>1202006</value>
+        </systemField>
+        <systemField dataType="Varchar" name="__lastModifiedUser">
+          <value>MV_testuser</value>
+        </systemField>
+        <systemField dataType="Timestamp" name="__lastModified">
+          <value>2019-01-02 06:10:50.293</value>
+          <formattedValue language="en">02.01.2019 06:10</formattedValue>
+        </systemField>
+        <systemField dataType="Varchar" name="__createdUser">
+          <value/>
+        </systemField>
+        <systemField dataType="Long" name="__orgUnit">
+          <value>NBA</value>
+        </systemField>
+        <systemField name="__uuid">
+          <value>9ce62485-e260-42d2-ae88-b4dc0c094940</value>
+        </systemField>
+        <dataField dataType="Boolean" name="MulDummyMarkerNBA01Boo">
+          <value>false</value>
+          <formattedValue language="en">no</formattedValue>
+        </dataField>
+        <dataField dataType="Varchar" name="MulOriginalFileTxt">
+          <value>kärpänen.JPG</value>
+        </dataField>
+        <vocabularyReference name="MulTypeVoc" id="30341" instanceName="MulTypeVgr">
+          <vocabularyReferenceItem id="105829" name="image">
+            <formattedValue language="en">Image</formattedValue>
+          </vocabularyReferenceItem>
+        </vocabularyReference>
+        <virtualField name="MulUUIDNBA01Vrt">
+          <value>urn:uuid:9ce62485-e260-42d2-ae88-b4dc0c094940</value>
+        </virtualField>
+        <virtualField name="MulMultimediaVrt">
+          <value>kärpänen.JPG, kuva</value>
+        </virtualField>
+        <composite name="MulReferencesCre">
+          <compositeItem seqNo="0">
+            <moduleReference name="MulObjectRef" targetModule="Object" multiplicity="M:N" size="1">
+              <moduleReferenceItem moduleItemId="1234567" uuid="6a0eb57b-5293-458d-88a6-351876f54641" seqNo="0">
+                <formattedValue language="en">Object: TEST1337:21, Erkki Esimerkki, Jonkinlainen testiaineisto</formattedValue>
+                <dataField dataType="Boolean" name="ThumbnailBoo">
+                  <value>true</value>
+                  <formattedValue language="en">yes</formattedValue>
+                </dataField>
+              </moduleReferenceItem>
+            </moduleReference>
+          </compositeItem>
+        </composite>
+      </moduleItem>
+    </module>
+  </modules>
+</application>

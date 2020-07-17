@@ -117,3 +117,16 @@ async def test_generate_sip_jpeg_mpo_not_supported(
         await museum_package.generate_sip()
 
     assert "MPO JPEG files not supported" == exc.value.error
+
+
+@pytest.mark.asyncio
+async def test_generate_sip_with_non_ascii_filename(
+        package_dir, mock_museumplus, museum_package_factory):
+    """
+    Test generating a SIP containing an attachment with a non-ASCII filename,
+    which are not processed by the DPRES service yet
+    """
+    with pytest.raises(PreservationError) as exc:
+        await museum_package_factory("1234582")
+
+    assert "Filename contains non-ASCII characters" == exc.value.error

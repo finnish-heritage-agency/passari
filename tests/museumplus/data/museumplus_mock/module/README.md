@@ -32,3 +32,5 @@ There are currently test files for the following fake objects:
   * has attachment 1234580001 (test.TIF) which will raise a PreservationError due to being a multi-page TIFF
 * Object 1234581
   * has attachment 1234581001 (test.JPG) which will raise a PreservationError due to being a MPO/JPEG image file
+* Object 1234582
+  * has attachment 1234582001 (kärpänen.JPG) which will raise a PreservationError due to the non-ASCII filename, which is not supported by the DPRES service at the time of writing

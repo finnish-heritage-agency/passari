@@ -9,20 +9,18 @@ import lxml.etree
 
 import aiofiles
 from passari.config import (CONTRACT_ID, LIDO_REPORT_ID, MUSEUMPLUS_URL,
-                                   ORGANIZATION_NAME, SIGN_KEY_PATH)
+                            ORGANIZATION_NAME, SIGN_KEY_PATH)
 from passari.dpres.errors import raise_for_preservation_error
 from passari.dpres.events import get_premis_events
 from passari.dpres.scripts import (add_premis_event, compile_mets,
-                                          compile_structmap, compress,
-                                          create_mix, extract_archive,
-                                          import_description, import_object,
-                                          sign_mets)
+                                   compile_structmap, compress, create_mix,
+                                   extract_archive, import_description,
+                                   import_object, sign_mets)
 from passari.exceptions import PreservationError
 from passari.logger import logger
 from passari.museumplus.connection import get_museum_session
-from passari.museumplus.db import (MuseumAttachment,
-                                          MuseumCollectionActivity,
-                                          MuseumObject)
+from passari.museumplus.db import (MuseumAttachment, MuseumCollectionActivity,
+                                   MuseumObject)
 from passari.util import retrieve_cached_xml
 
 IMAGE_FORMATS = set(["gif", "tif", "tiff", "jpg", "jpeg"])
@@ -195,6 +193,22 @@ class MuseumObjectPackage:
             path=attachment_dir / f"Multimedia.xml"
         )
         attachment = MuseumAttachment(etree)
+
+        # Raise PreservationError if attachment filename contains non-ASCII
+        # characters, as those are not yet supported by the DPRES service.
+        # See CSC ticket #402027.
+        # TODO: Remove once the filename issue at DPRES service is fixed
+        try:
+            filename = attachment.filename
+            filename.encode("ascii")
+        except UnicodeEncodeError:
+            raise PreservationError(
+                detail=(
+                    f"Filename {filename} contains non-ASCII characters and "
+                    f"can't be uploaded into the DPRES service at this time."
+                ),
+                error="Filename contains non-ASCII characters"
+            )
 
         attachment_path = attachment_dir / attachment.filename
 
