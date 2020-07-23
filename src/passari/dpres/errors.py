@@ -137,9 +137,46 @@ class JPEGMPONotSupportedError(ErrorDetector):
             )
 
 
+class JPEGVersionNotSupportedError(ErrorDetector):
+    """
+    Raise a PreservationError if the file format version couldn't be detected
+    for a JPEG file.
+
+    In the cases discovered so far, file-scraper is not able to detect any
+    JPEG version at all (eg. the version is "(:unav)"), resulting in the
+    "version not supported" error.
+
+    The faulty files were also created using Photoshop CS5 and CS6, and were
+    converted from TIFF to JPEG.
+    """
+    def check(self, exc):
+        if exc.cmd[0] != "import-object":
+            return
+
+        file_path = exc.cmd[-1]
+        file_ext = file_path.split(".")[-1].lower()
+
+        if file_ext not in ("jpg", "jpeg"):
+            return
+
+        stderr = exc.stderr.decode("utf-8")
+
+        version_not_detected = (
+            "File format version is not supported." in stderr
+        )
+
+        if version_not_detected:
+            raise PreservationError(
+                detail=(
+                    f"JPEG version not supported for {file_path}"
+                ),
+                error="JPEG version not supported"
+            )
+
+
 ERROR_DETECTORS = (
     JHOVEInvalidTIFFError, MultiPageTIFFError, JPEGMIMETypeError,
-    JPEGMPONotSupportedError
+    JPEGMPONotSupportedError, JPEGVersionNotSupportedError
 )
 
 # TODO: As with event creators, error detectors could be developed and

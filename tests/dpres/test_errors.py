@@ -20,6 +20,19 @@ IMPORT_OBJECT_JPEG_MIME_TYPE_ERROR_STDERR = """
 ValueError: MIME type not supported by this scraper.
 """
 
+IMPORT_OBJECT_JPEG_VERSION_NOT_SUPPORTED_STDERR = """
+File "utils.py", line 132, in scrape_file
+    raise ValueError(six.ensure_str(error_str))
+ValueError: 
+
+
+
+
+
+
+File format version is not supported.
+"""
+
 
 @pytest.mark.asyncio
 async def test_generate_sip_unsupported_file_format(
@@ -130,3 +143,43 @@ async def test_generate_sip_with_non_ascii_filename(
         await museum_package_factory("1234582")
 
     assert "Filename contains non-ASCII characters" == exc.value.error
+
+
+@pytest.mark.asyncio
+async def test_generate_sip_jpeg_version_not_supported(
+        package_dir, museum_package_factory, monkeypatch):
+    """
+    Test generating a SIP containing a JPEG file with a file format
+    that is not supported
+    """
+    # Monkeypatch 'import_object' since reproducing the error would
+    # since the image file containing the exact flaw can't be distributed
+    # publicly
+    async def mock_import_object(path, *args, **kwargs):
+        from passari.dpres.scripts import import_object
+
+        if path.name == "test.JPG":
+            raise CalledProcessError(
+                cmd=["import-object", str(path)],
+                returncode=1,
+                output=b"",
+                stderr=(
+                    IMPORT_OBJECT_JPEG_VERSION_NOT_SUPPORTED_STDERR.encode(
+                        "utf-8"
+                    )
+                )
+            )
+        else:
+            return await import_object(path, *args, **kwargs)
+
+    monkeypatch.setattr(
+        "passari.dpres.package.import_object",
+        mock_import_object
+    )
+
+    museum_package = await museum_package_factory("1234576")
+
+    with pytest.raises(PreservationError) as exc:
+        await museum_package.generate_sip()
+
+    assert "JPEG version not supported" == exc.value.error
