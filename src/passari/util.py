@@ -1,6 +1,8 @@
+import asyncio
 import contextlib
 import datetime
 import hashlib
+from concurrent.futures import FIRST_EXCEPTION, ALL_COMPLETED
 
 import dateutil.parser
 import lxml.etree
@@ -69,6 +71,52 @@ async def retrieve_cached_xml(session, url: str, path):
             await file_.write(content)
 
     return lxml.etree.fromstring(content)
+
+
+async def gather_or_raise_first(*aws):
+    """
+    Wait and return a list of results for awaitables if all succeed.
+    If any of the tasks fails, cancel all remaining tasks and raise the first
+    encountered exception and discard the rest.
+
+    This is used when we only need to handle one exception from possibly
+    multiple exceptions.
+    """
+    if len(aws) == 0:
+        return []
+
+    tasks = [asyncio.ensure_future(aw) for aw in aws]
+
+    # Wait until all tasks succeed or one of them fails
+    await asyncio.wait(tasks, return_when=FIRST_EXCEPTION)
+
+    failed_tasks = [task for task in tasks if task.exception() is not None]
+
+    if failed_tasks:
+        # One of the tasks failed, cancel all tasks and raise the first
+        # exception we find
+        for task in tasks:
+            if not task.done():
+                task.cancel()
+
+        # Ensure all tasks are completed including cancellations
+        await asyncio.wait(tasks, return_when=ALL_COMPLETED)
+
+        # Log all the exceptions
+        excs = [
+            task.exception() for task in tasks if task.exception() is not None
+        ]
+
+        logger.warning(
+            "'gather_or_raise_first' caught %d exceptions.", len(excs)
+        )
+        for exc in excs:
+            logger.warning("Caught: %s", str(exc))
+
+        raise failed_tasks[0].exception()
+
+    # All succeeded, return the results
+    return [task.result() for task in tasks]
 
 
 def unix_timestamp_to_datetime(timestamp: int):

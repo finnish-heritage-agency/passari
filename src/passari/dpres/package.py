@@ -21,7 +21,7 @@ from passari.logger import logger
 from passari.museumplus.connection import get_museum_session
 from passari.museumplus.db import (MuseumAttachment, MuseumCollectionActivity,
                                    MuseumObject)
-from passari.util import retrieve_cached_xml
+from passari.util import gather_or_raise_first, retrieve_cached_xml
 
 IMAGE_FORMATS = set(["gif", "tif", "tiff", "jpg", "jpeg"])
 DOCUMENT_FORMATS = set([
@@ -276,7 +276,7 @@ class MuseumObjectPackage:
             for item_id in self.museum_object.attachment_ids
         ]
 
-        attachments = await asyncio.gather(*futures)
+        attachments = await gather_or_raise_first(*futures)
         self.attachments = attachments
 
         # Remove files that were downloaded before but no longer belong
@@ -370,7 +370,7 @@ class MuseumObjectPackage:
             for item_id in self.museum_object.collection_activity_ids
         ]
 
-        collection_activities = await asyncio.gather(*futures)
+        collection_activities = await gather_or_raise_first(*futures)
         self.collection_activities = collection_activities
 
         self.clean_collection_activities()
