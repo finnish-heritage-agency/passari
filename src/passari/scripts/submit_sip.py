@@ -1,10 +1,10 @@
 """
 Submit a SIP archive to the digital preservation service
 """
-import asyncio
 from pathlib import Path
 
 import click
+
 from passari.config import CONFIG
 from passari.dpres.package import MuseumObjectPackage
 from passari.dpres.ssh import connect_dpres_sftp

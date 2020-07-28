@@ -2,17 +2,16 @@
 Confirm a SIP as either having been accepted or rejected in the digital
 preservation service
 """
-import asyncio
 import shutil
-import subprocess
 from pathlib import Path
 
 import click
 
+from passari.config import CONFIG
 from passari.dpres.package import MuseumObjectPackage
 from passari.museumplus.fields import add_preservation_event
+from passari.scripts.utils import async_run
 from passari.util import debugger_enabled
-from passari.config import CONFIG
 
 
 async def confirm_sip(
@@ -94,9 +93,8 @@ def main(
     package_dir = Path(package_dir)
     archive_dir = Path(archive_dir)
 
-    loop = asyncio.get_event_loop()
     with debugger_enabled(debug):
-        return loop.run_until_complete(
+        return async_run(
             confirm_sip(
                 package_dir=package_dir,
                 archive_dir=archive_dir,

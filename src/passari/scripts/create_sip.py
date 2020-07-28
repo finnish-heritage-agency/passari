@@ -1,7 +1,6 @@
 """
 Validate and package a downloaded object into a SIP
 """
-import asyncio
 import datetime
 from pathlib import Path
 
@@ -9,6 +8,7 @@ import click
 
 from passari.dpres.package import MuseumObjectPackage
 from passari.util import debugger_enabled, DateTimeType
+from passari.scripts.utils import async_run
 
 
 async def create_sip(
@@ -111,9 +111,8 @@ def main(package_dir, object_id, update=False, create_date=None,
          modify_date=None, sip_id=None, debug=False):
     package_dir = Path(package_dir)
 
-    loop = asyncio.get_event_loop()
     with debugger_enabled(debug):
-        return loop.run_until_complete(
+        return async_run(
             create_sip(
                 package_dir=package_dir, object_id=object_id, sip_id=sip_id,
                 update=update, create_date=create_date, modify_date=modify_date

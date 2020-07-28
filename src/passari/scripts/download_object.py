@@ -1,14 +1,15 @@
 """
 Download an object from a MuseumPlus instance
 """
-import asyncio
 from pathlib import Path
 
 import click
+
+from passari.dpres.package import MuseumObjectPackage
 from passari.museumplus.connection import get_museum_session
 from passari.museumplus.db import get_museum_object
+from passari.scripts.utils import async_run
 from passari.util import debugger_enabled
-from passari.dpres.package import MuseumObjectPackage
 
 
 async def download_object(
@@ -69,9 +70,8 @@ def main(package_dir, object_id, sip_id=None, debug=False):
     """
     package_dir = Path(package_dir)
 
-    loop = asyncio.get_event_loop()
     with debugger_enabled(debug):
-        return loop.run_until_complete(
+        return async_run(
             download_object(
                 package_dir=package_dir, object_id=object_id, sip_id=sip_id
             )
