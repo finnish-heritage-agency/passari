@@ -9,7 +9,7 @@ from passari.dpres.package import MuseumObjectPackage
 from passari.museumplus.connection import get_museum_session
 from passari.museumplus.db import get_museum_object
 from passari.scripts.utils import async_run
-from passari.util import debugger_enabled
+from passari.utils import debugger_enabled
 
 
 async def download_object(

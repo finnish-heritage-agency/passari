@@ -1,7 +1,7 @@
 import lxml.etree
 
 from passari.museumplus.settings import ZETCOM_NS
-from passari.util import get_xml_hash
+from passari.utils import get_xml_hash
 
 DOCUMENT_A = b"""<?xml version="1.0" encoding="UTF-8"?>
 <application xmlns="http://www.zetcom.com/ria/ws/module">

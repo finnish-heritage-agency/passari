@@ -2,11 +2,11 @@ import datetime
 from pathlib import Path
 
 import dateutil.parser
-
 import lxml.etree
-from passari.museumplus.settings import ZETCOM_NS
-from passari.util import retrieve_xml
+
 from passari.config import MUSEUMPLUS_URL
+from passari.museumplus.settings import ZETCOM_NS
+from passari.utils import retrieve_xml
 
 
 class BaseMuseumModule:

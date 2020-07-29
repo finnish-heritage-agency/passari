@@ -11,7 +11,7 @@ from passari.config import CONFIG
 from passari.dpres.package import MuseumObjectPackage
 from passari.museumplus.fields import add_preservation_event
 from passari.scripts.utils import async_run
-from passari.util import debugger_enabled
+from passari.utils import debugger_enabled
 
 
 async def confirm_sip(

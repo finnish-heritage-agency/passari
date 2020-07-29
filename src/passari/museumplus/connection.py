@@ -10,8 +10,7 @@ from filelock import FileLock
 from passari.config import CONFIG, MUSEUMPLUS_URL
 from passari.logger import logger
 from passari.museumplus.settings import ZETCOM_SESSION_NS
-from passari.util import retrieve_xml
-
+from passari.utils import retrieve_xml
 
 # Session key will be regenerated after this many seconds if no requests
 # have been for this long

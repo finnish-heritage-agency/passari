@@ -2,7 +2,7 @@ import lxml.etree
 
 import pytest
 from passari.dpres.package import MuseumObjectPackage
-from tests.util import is_image_file, is_xml_file
+from tests.utils import is_image_file, is_xml_file
 
 METS_NS = "http://www.loc.gov/METS/"
 PREMIS_NS = "info:lc/xmlns/premis-v2"

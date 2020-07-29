@@ -1,4 +1,4 @@
-from passari.util import unix_timestamp_to_datetime
+from passari.utils import unix_timestamp_to_datetime
 
 
 class PremisEvent:

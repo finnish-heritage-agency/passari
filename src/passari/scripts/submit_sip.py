@@ -8,7 +8,7 @@ import click
 from passari.config import CONFIG
 from passari.dpres.package import MuseumObjectPackage
 from passari.dpres.ssh import connect_dpres_sftp
-from passari.util import debugger_enabled
+from passari.utils import debugger_enabled
 
 
 def submit_sip(package_dir, object_id: int, sip_id: str = None):

@@ -2,7 +2,7 @@ import asyncio
 import sys
 
 # Following "async_run" function is copied from newer version of Python
-# and to get roughly the same behavior.
+# to get roughly the same behavior.
 # TODO: Remove this compatibility shim once required Python version is 3.7+
 # and just use `asyncio.run` that's available in the standard library
 

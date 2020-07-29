@@ -32,6 +32,11 @@ def pytest_collection_modifyitems(config, items):
 
 @pytest.fixture(scope="function", autouse=True)
 def cache_dir(tmpdir, monkeypatch):
+    """
+    Fixture to return the test XDG cache directory
+
+    This directory will contain MuseumPlus session-related files
+    """
     (tmpdir / ".cache").mkdir()
     monkeypatch.setenv("XDG_CACHE_HOME", str(tmpdir / ".cache"))
 
@@ -40,6 +45,9 @@ def cache_dir(tmpdir, monkeypatch):
 
 @pytest.fixture(scope="function")
 def museum_packages_dir(tmpdir, monkeypatch):
+    """
+    Fixture pointing to a directory containing museum packages
+    """
     path = Path(tmpdir) / "MuseumPackages"
     path.mkdir(exist_ok=True)
 
@@ -48,20 +56,23 @@ def museum_packages_dir(tmpdir, monkeypatch):
 
 @pytest.fixture(scope="function")
 def museum_package_dir(museum_packages_dir):
-    package_dir = museum_packages_dir / "1234567"
+    """
+    Fixture pointing to a directory for a single museum package
+    """
+    package_dir_ = museum_packages_dir / "1234567"
 
-    package_dir.mkdir()
-    package_dir.joinpath("sip").mkdir()
-    package_dir.joinpath("sip", "reports").mkdir()
+    package_dir_.mkdir()
+    package_dir_.joinpath("sip").mkdir()
+    package_dir_.joinpath("sip", "reports").mkdir()
 
     shutil.copyfile(
         Path(__file__).parent.resolve()
         / "museumplus" / "data" / "museumplus_mock" / "module" / "Object"
         / "1234567.xml",
-        package_dir / "sip" / "reports" / "Object.xml"
+        package_dir_ / "sip" / "reports" / "Object.xml"
     )
 
-    return package_dir
+    return package_dir_
 
 
 @pytest.fixture(scope="function")

@@ -3,11 +3,10 @@ import datetime
 import dateutil.parser
 import lxml.etree as ET
 
-from passari.config import CONFIG, LIDO_REPORT_ID, MUSEUMPLUS_URL
+from passari.config import CONFIG, MUSEUMPLUS_URL
 from passari.logger import logger
-from passari.museumplus.connection import get_museum_session
 from passari.museumplus.settings import ZETCOM_NS, ZETCOM_SEARCH_NS
-from passari.util import get_xml_hash, post_xml
+from passari.utils import get_xml_hash, post_xml
 
 # Search template to retrieve objects in an ascending order from oldest to
 # newest.

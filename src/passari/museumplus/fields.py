@@ -5,7 +5,7 @@ from lxml.etree import Element, fromstring, tostring
 
 from passari.config import CONFIG, MUSEUMPLUS_URL
 from passari.museumplus.settings import ZETCOM_NS
-from passari.util import retrieve_xml
+from passari.utils import retrieve_xml
 
 
 async def get_object_field(session, object_id: int, name: str):

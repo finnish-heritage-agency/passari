@@ -2,15 +2,13 @@ import asyncio
 import datetime
 import os
 from pathlib import Path
+from subprocess import CalledProcessError
+
+from pkg_resources import DistributionNotFound, get_distribution
 
 import aiofiles
 from passari.config import CONFIG
 from passari.logger import logger
-
-from pkg_resources import DistributionNotFound, get_distribution
-
-from subprocess import CalledProcessError
-
 
 try:
     PASSARI_VERSION = get_distribution("passari").version

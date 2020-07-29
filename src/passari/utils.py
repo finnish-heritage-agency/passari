@@ -82,7 +82,7 @@ async def gather_or_raise_first(*aws):
     This is used when we only need to handle one exception from possibly
     multiple exceptions.
     """
-    if len(aws) == 0:
+    if not aws:
         return []
 
     tasks = [asyncio.ensure_future(aw) for aw in aws]
