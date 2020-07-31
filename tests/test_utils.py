@@ -1,7 +1,10 @@
+import asyncio
+
 import lxml.etree
 
+import pytest
 from passari.museumplus.settings import ZETCOM_NS
-from passari.utils import get_xml_hash
+from passari.utils import get_xml_hash, gather_or_raise_first
 
 DOCUMENT_A = b"""<?xml version="1.0" encoding="UTF-8"?>
 <application xmlns="http://www.zetcom.com/ria/ws/module">
@@ -95,3 +98,31 @@ def test_get_xml_hash():
         "22b2540ec757f7c55e3fc8661d81f2604e94aaff6e714e4544461624ee41e3c9",
         "ab259034d4e7ee3b7eb940b2625aef83008ad87c6dac2edcb11738561889ccba"
     ]
+
+
+@pytest.mark.asyncio
+async def test_gather_or_raise_first():
+    async def delayed_success(i):
+        await asyncio.sleep(i*0.02)
+        return i
+
+    async def delayed_failure(i):
+        await asyncio.sleep(i*0.02)
+        raise ValueError(f"Failure {i}")
+
+    # Test scenario where all tasks succeed
+    result = await gather_or_raise_first(
+        delayed_success(1), delayed_success(2), delayed_success(3)
+    )
+    assert result == [1, 2, 3]
+
+    # Test scenario where one of the tasks fails
+    with pytest.raises(ValueError) as exc:
+        await gather_or_raise_first(
+            delayed_success(1), delayed_success(2), delayed_failure(3),
+            # This last task will never finish and will be cancelled
+            # instead after 'delayed_failure(3)' fails
+            delayed_failure(100)
+        )
+
+    assert str(exc.value) == "Failure 3"

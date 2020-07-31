@@ -90,7 +90,10 @@ async def gather_or_raise_first(*aws):
     # Wait until all tasks succeed or one of them fails
     await asyncio.wait(tasks, return_when=FIRST_EXCEPTION)
 
-    failed_tasks = [task for task in tasks if task.exception() is not None]
+    failed_tasks = [
+        task for task in tasks
+        if task.done() and task.exception() is not None
+    ]
 
     if failed_tasks:
         # One of the tasks failed, cancel all tasks and raise the first
@@ -103,9 +106,7 @@ async def gather_or_raise_first(*aws):
         await asyncio.wait(tasks, return_when=ALL_COMPLETED)
 
         # Log all the exceptions
-        excs = [
-            task.exception() for task in tasks if task.exception() is not None
-        ]
+        excs = [task.exception() for task in failed_tasks]
 
         logger.warning(
             "'gather_or_raise_first' caught %d exceptions.", len(excs)
