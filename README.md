@@ -22,8 +22,8 @@ pip install .
 You can install directly from GitHub:
 
 ```
-# Install git-tagged version 1.0 (replace with newer if available)
-pip install --upgrade git+https://github.com/finnish-heritage-agency/passari.git@1.0#egg=passari
+# Install git-tagged version 1.1 (replace with newer if available)
+pip install --upgrade git+https://github.com/finnish-heritage-agency/passari.git@1.1#egg=passari
 # Install development version from master
 pip install --upgrade git+https://github.com/finnish-heritage-agency/passari.git#egg=passari
 ```

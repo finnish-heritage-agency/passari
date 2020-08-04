@@ -22,8 +22,8 @@ After this, create a new directory that will contain your virtualenv:
 
     $ python3.6 -mvenv <venv_dir>
     $ source <venv_dir>/bin/activate
-    # Replace 1.0 with the latest git-tagged version to install the latest version
-    $ pip install git+https://github.com/finnish-heritage-agency/passari.git@1.0#egg=passari
+    # Replace 1.1 with the latest git-tagged version to install the latest version
+    $ pip install git+https://github.com/finnish-heritage-agency/passari.git@1.1#egg=passari
 
 You can disable the *virtualenv* using `deactivate` and activate it with `source <venv_dir>/bin/activate`.
 
