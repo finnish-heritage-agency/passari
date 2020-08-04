@@ -146,6 +146,22 @@ async def test_generate_sip_with_non_ascii_filename(
 
 
 @pytest.mark.asyncio
+async def test_generate_sip_multimedia_xml_not_allowed(
+        package_dir, mock_museumplus, museum_package_factory):
+    """
+    Test generating a SIP containing an attachment named "Multimedia.xml",
+    which is not allowed as it would overwrite a file with the same name
+    """
+    with pytest.raises(PreservationError) as exc:
+        await museum_package_factory("1234583")
+
+    assert (
+        exc.value.error
+        == "Filename 'Multimedia.xml' not allowed for attachment"
+    )
+
+
+@pytest.mark.asyncio
 async def test_generate_sip_jpeg_version_not_supported(
         package_dir, museum_package_factory, monkeypatch):
     """

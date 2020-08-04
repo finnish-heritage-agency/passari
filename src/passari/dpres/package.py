@@ -194,12 +194,26 @@ class MuseumObjectPackage:
         )
         attachment = MuseumAttachment(etree)
 
+        filename = attachment.filename
+
+        if filename == "Multimedia.xml":
+            # If the attachment is named "Multimedia.xml", it would overwrite
+            # the XML document we have already saved in the same directory.
+            # In this case, raise a PreservationError to prevent packaging
+            # and the file from being silently overwritten.
+            raise PreservationError(
+                detail=(
+                    "The attachment filename 'Multimedia.xml' conflicts with "
+                    "the Multimedia XML document we have already downloaded."
+                ),
+                error="Filename 'Multimedia.xml' not allowed for attachment"
+            )
+
         # Raise PreservationError if attachment filename contains non-ASCII
         # characters, as those are not yet supported by the DPRES service.
         # See CSC ticket #402027.
         # TODO: Remove once the filename issue at DPRES service is fixed
         try:
-            filename = attachment.filename
             filename.encode("ascii")
         except UnicodeEncodeError:
             raise PreservationError(
