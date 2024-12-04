@@ -14,7 +14,7 @@
 # import sys
 # sys.path.insert(0, os.path.abspath('.'))
 
-from pkg_resources import get_distribution, DistributionNotFound
+import importlib.metadata
 
 
 # -- Project information -----------------------------------------------------
@@ -24,9 +24,9 @@ copyright = '2020, Finnish Heritage Agency'
 author = 'Janne Pulkkinen'
 
 try:
-    release = get_distribution("passari").version
+    release = importlib.metadata.version("passari")
     version = release
-except DistributionNotFound:
+except importlib.metadata.PackageNotFoundError:
     release = None
     version = None
 
