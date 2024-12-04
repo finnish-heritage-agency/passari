@@ -1,0 +1,52 @@
+[build-system]
+requires = ["setuptools>=64", "wheel", "setuptools_scm>=8"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "passari"
+dynamic = ["version"]
+description = "Tools for MuseumPlus digital preservation processes"
+readme = "README.md"
+authors = [{name="Janne Pulkkinen", email="janne.pulkkinen@museovirasto.fi"}]
+license = {file = "LICENSE"}
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.6",
+    "License :: OSI Approved :: MIT License"
+]
+requires-python = ">=3.6"
+dependencies = [
+    "aiohttp",
+    "aiofiles",
+    "lxml>=4.1",
+    "click>=7,<8",
+    "toml",
+    "python-dateutil",
+    "paramiko",
+    "filelock",
+]
+
+[project.optional-dependencies]
+dev = [
+    "ruff",
+    "ipython",
+]
+docs = ["sphinxcontrib-apidoc"]
+
+[project.urls]
+Homepage = "https://github.com/finnish-heritage-agency/passari"
+Repository = "https://github.com/finnish-heritage-agency/passari"
+
+[project.scripts]
+download-object = "passari.scripts.download_object:cli"
+create-sip = "passari.scripts.create_sip:cli"
+submit-sip = "passari.scripts.submit_sip:cli"
+confirm-sip = "passari.scripts.confirm_sip:cli"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools_scm]
+fallback_version = "0.0.0"
