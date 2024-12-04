@@ -43,5 +43,5 @@ Documentation
 Documentation can be generated using Sphinx by running the following command:
 
 ```
-python setup.py build_sphinx
+make docs
 ```
